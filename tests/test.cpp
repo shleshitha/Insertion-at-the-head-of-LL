@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 using namespace std;
 
 // ListNode definition
@@ -60,13 +61,20 @@ void runTestCase(vector<int> inputList, int X, vector<int> expectedList, int* pa
     }
 }
 
-// Main
+// Main function with 10 test cases
 int main() {
     int passed = 0, total = 0;
 
-    runTestCase({1, 2, 3}, 0, {0, 1, 2, 3}, &passed, &total);
-    runTestCase({}, 10, {10}, &passed, &total);
-    runTestCase({5}, 7, {7, 5}, &passed, &total);
+    runTestCase({1, 2, 3}, 0, {0, 1, 2, 3}, &passed, &total);           // Insert at head, normal list
+    runTestCase({}, 10, {10}, &passed, &total);                        // Insert in empty list
+    runTestCase({5}, 7, {7, 5}, &passed, &total);                      // Insert at head, single node
+    runTestCase({-1, -2, -3}, -4, {-4, -1, -2, -3}, &passed, &total);  // Negative values
+    runTestCase({100, 200}, 300, {300, 100, 200}, &passed, &total);    // Larger integers
+    runTestCase({1, 1, 1}, 1, {1, 1, 1, 1}, &passed, &total);          // All elements the same
+    runTestCase({9, 8, 7}, 10, {10, 9, 8, 7}, &passed, &total);        // Increasing head insert
+    runTestCase({0}, 0, {0, 0}, &passed, &total);                      // Insert 0 at head
+    runTestCase({INT_MAX}, INT_MIN, {INT_MIN, INT_MAX}, &passed, &total); // Edge int values
+    runTestCase({2, 4, 6, 8}, 1, {1, 2, 4, 6, 8}, &passed, &total);    // General even list
 
     cout << passed << "/" << total << " test cases passed." << endl;
     return 0;
