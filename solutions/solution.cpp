@@ -25,7 +25,6 @@ class Solution {
     public:
         ListNode* insertAtHead(ListNode* &head, int X) {
                 //implement your code
-
         }
     };
     
