@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 #include "../solutions/solution.c"
-
+ 
 // Convert linked list to array
 int* linkedListToArray(struct ListNode* head, int* length) {
     int* arr = malloc(100 * sizeof(int));
