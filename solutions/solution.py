@@ -4,9 +4,7 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def insertAtHead(self, head: 'ListNode', X: int) -> 'ListNode':
-        newNode = ListNode(X)
-        newNode.next = head
-        head = newNode
-        return head
-
+    def insertAtHead(self, head, val):
+        new_node = ListNode(val)
+        new_node.next = head
+        return new_node

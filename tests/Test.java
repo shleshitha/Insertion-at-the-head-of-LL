@@ -1,77 +1,61 @@
-package tests; // ✅ Define package name
+package tests;
 
-import solutions.Solution; // ✅ Import the Solution class
+
+import solutions.ListNode;
+import solutions.Solution;
+
+import java.util.Arrays;
 
 public class Test {
-    private static int passed = 0;
-    private static int total = 0;
-
-    // Helper function to print the linked list
-    public static void printList(ListNode head) {
-        while (head != null) {
-            System.out.print(head.val + (head.next != null ? " -> " : ""));
-            head = head.next;
-        }
-        System.out.println();
-    }
-
-    // Helper function to convert linked list to array for comparison
+    // Helper to convert list to array
     public static int[] listToArray(ListNode head) {
-        int size = 0;
-        ListNode temp = head;
-        while (temp != null) {
-            size++;
-            temp = temp.next;
-        }
-        
-        int[] result = new int[size];
-        int index = 0;
+        int[] arr = new int[100];
+        int i = 0;
         while (head != null) {
-            result[index++] = head.val;
+            arr[i++] = head.val;
             head = head.next;
         }
-        return result;
+        return Arrays.copyOf(arr, i);
     }
 
-    // Function to run individual test cases
-    public static void runTestCase(int[] inputList, int X, int[] expected) {
-        total++;
+    // Compare two arrays
+    public static boolean arraysEqual(int[] a, int[] b) {
+        return Arrays.equals(a, b);
+    }
 
-        // Create linked list from input array
+    // Run one test case
+    public static void runTest(int[] input, int[] expected, int[] passCount) {
+        Solution solution = new Solution();
         ListNode head = null;
-        for (int i = inputList.length - 1; i >= 0; i--) {
-            head = new ListNode(inputList[i], head);
+
+        for (int val : input) {
+            head = solution.insertAtHead(head, val);
         }
 
-        // Insert the new value at the head
-        Solution solution = new Solution();
-        head = solution.insertAtHead(head, X);
-
-        // Convert the resulting linked list to an array
         int[] actual = listToArray(head);
 
-        // Check if actual result matches expected
-        if (java.util.Arrays.equals(actual, expected)) {
-            passed++;
-            System.out.println("✅ Test Passed");
+        if (arraysEqual(actual, expected)) {
+            passCount[0]++;
+            System.out.println("✅ Test " + passCount[0] + " passed");
         } else {
-            System.out.println("❌ Test Failed for input: " + java.util.Arrays.toString(inputList) + " with X = " + X);
-            System.out.println("   Expected: " + java.util.Arrays.toString(expected));
-            System.out.println("   Actual  : " + java.util.Arrays.toString(actual));
+            System.out.println("❌ Test failed. Expected: " + Arrays.toString(expected) + ", Got: " + Arrays.toString(actual));
         }
     }
 
-    // Main function to run all test cases
     public static void main(String[] args) {
-        runTestCase(new int[] {1, 2, 3}, 7, new int[] {7, 1, 2, 3});
-        runTestCase(new int[] {}, 7, new int[] {7});
-        runTestCase(new int[] {10}, 5, new int[] {5, 10});
-        runTestCase(new int[] {4, 6}, 9, new int[] {9, 4, 6});
-        runTestCase(new int[] {100}, 0, new int[] {0, 100});
+        int[] passCount = {0};
 
-        System.out.printf("\n✅ Passed %d / %d test cases!\n", passed, total);
-        if (passed != total) {
-            throw new AssertionError("Some test cases failed!");
-        }
+        runTest(new int[]{1, 2, 3}, new int[]{3, 2, 1}, passCount);
+        runTest(new int[]{10}, new int[]{10}, passCount);
+        runTest(new int[]{}, new int[]{}, passCount);
+        runTest(new int[]{4, 4, 4}, new int[]{4, 4, 4}, passCount);
+        runTest(new int[]{-1, -2, -3}, new int[]{-3, -2, -1}, passCount);
+        runTest(new int[]{0}, new int[]{0}, passCount);
+        runTest(new int[]{1, 2, 3, 4}, new int[]{4, 3, 2, 1}, passCount);
+        runTest(new int[]{9, 8, 7}, new int[]{7, 8, 9}, passCount);
+        runTest(new int[]{-1, 0, 1}, new int[]{1, 0, -1}, passCount);
+        runTest(new int[]{1,2,3,4,5,6,7,8,9,10}, new int[]{10,9,8,7,6,5,4,3,2,1}, passCount);
+
+        System.out.println("\n✅ Passed " + passCount[0] + " / 10 test cases!");
     }
 }

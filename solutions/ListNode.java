@@ -4,15 +4,13 @@ public class ListNode {
     public int val;
     public ListNode next;
 
-    public ListNode(int data) {
-        val = data;
-        next = null;
+    public ListNode(int val) {
+        this.val = val;
+        this.next = null;
     }
 
-    public ListNode(int data, ListNode nextNode) {
-        val = data;
-        next = nextNode;
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
-
-// ❌ Do NOT make Solution public
