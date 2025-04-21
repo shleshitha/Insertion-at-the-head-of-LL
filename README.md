@@ -34,7 +34,7 @@ Once you've successfully solved it on Take you forward, proceed with the steps b
 
    * Choose your preferred language (C, C++, Python, Java).
 
-   * Write your solution in the corresponding file or create a new one if it’s not already there.
+   * Write your solution in the corresponding file.
 
 3. Push Your Changes
    * git add .
