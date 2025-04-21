@@ -5,7 +5,7 @@ class ListNode {
     int val;
     ListNode next;
     ListNode(int data) {
-        val = data;
+        val = data; 
         next = null;
     }
     ListNode(int data, ListNode nextNode) {
