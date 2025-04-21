@@ -10,4 +10,5 @@ struct ListNode {
 
 struct ListNode* insertAtHead(struct ListNode* head, int X) {
     //implement your code
+    return NULL;
 }
