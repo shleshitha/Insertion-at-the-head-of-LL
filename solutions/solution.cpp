@@ -8,6 +8,7 @@ using namespace std;
 #define LISTNODE_H
 
 struct ListNode {
+
     int data;
     ListNode* next;
 
