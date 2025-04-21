@@ -1,7 +1,7 @@
 package solutions;
 
 public class ListNode {
-    public int val; 
+    public int val;
     public ListNode next;
 
     public ListNode(int data) {
@@ -16,10 +16,3 @@ public class ListNode {
 }
 
 // ❌ Do NOT make Solution public
-class Solution {
-    public ListNode insertAtHead(ListNode head, int X) {
-        ListNode newNode = new ListNode(X);
-        newNode.next = head;
-        return newNode;
-    }
-}
