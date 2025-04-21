@@ -1,20 +1,54 @@
-# 🚀 GitHub Automation for Multi-Language Testing
+## 👩‍💻 Project Instructions
 
-This repository is designed to automate the testing of solutions written in **C, C++, Python, and Java**. The project includes:
-- **Solution files** stored in the `solutions/` folder.
-- **Test cases** stored in the `tests/` folder.
-- **GitHub Actions workflow** that runs tests automatically when code is pushed.
+### 🔗 GitHub Repository to Clone
+📁 **Repository Link:**  
+👉 [https://github.com/saikrishnamamidi2003/Insertion-at-the-head-of-LL](https://github.com/saikrishnamamidi2003/Insertion-at-the-head-of-LL)
 
 ---
 
-## 📌 Solve the Problem on take you forward First 🎯
-
-Before implementing your solution in this repository, **first solve the problem on take you forward **:  
+### ✅ Objective
+Implement the solution for the Take you forward problem:
 
 👉 **[take you forward Problem: Insertion at the head of LL](https://takeuforward.org/plus/dsa/problems/insertion-at-the-head-of-ll)**  
 
-Once you have successfully solved it on take you forward, proceed with implementing the solution in this repository.
+---
+
+### ⚠️ Important Note  
+Before implementing your solution in this GitHub repository,  
+please **first solve the problem on Take you forward** and ensure your approach works.
+
+Once you've successfully solved it on Take you forward, proceed with the steps below.
 
 ---
 
-## 📌 Project Structure
+### 📌 Steps to Follow
+
+1. **Fork or Clone the Repository**  
+
+   * git clone https://github.com/saikrishnamamidi2003/Insertion-at-the-head-of-LL.git
+   * cd github-Insertion-at-the-head-of-LL
+
+2. Implement Your Code
+
+   * Navigate to the solutions/ folder.
+
+   * Choose your preferred language (C, C++, Python, Java).
+
+   * Write your solution in the corresponding file or create a new one if it’s not already there.
+
+3. Push Your Changes
+   * git add .
+   * git commit -m "Implemented delete node in my preferred language"
+   * git push origin main
+
+
+4. Wait for GitHub Actions to Test Your Code Automatically.
+   The .github/workflows/test.yml file will trigger automated testing using the appropriate test file from the tests/ folder.
+
+Check the Actions tab on GitHub.
+
+✅ Test Passed
+
+❌ Test Failed
+
+
