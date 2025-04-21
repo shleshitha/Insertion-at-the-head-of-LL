@@ -9,7 +9,7 @@ class Solution {
             ListNode* newNode = new ListNode(X);
             newNode->next = head;
             head = newNode;
-            return head;
+            return head; 
         }
     };
     
