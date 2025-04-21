@@ -2,10 +2,6 @@
 #include <unordered_map>
 #include <string>  // Required for std::string
 using namespace std; 
- 
-// ListNode.h
-#ifndef LISTNODE_H 
-#define LISTNODE_H 
 
 struct ListNode {
 
@@ -17,8 +13,6 @@ struct ListNode {
         next = nullptr;
     }
 };
-
-#endif
 
 
 class Solution {
