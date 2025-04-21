@@ -7,4 +7,4 @@ class Solution:
     def insertAtHead(self, head, val):
         #implement your code
         pass
- 
+  
