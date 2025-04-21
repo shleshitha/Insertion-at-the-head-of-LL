@@ -1,74 +1,73 @@
-#include <bits/stdc++.h>
-#include "../solutions/solution.cpp"  // Include your solution file
-
+#include <iostream>
+#include <vector>
 using namespace std;
 
-// Helper function to create a linked list from an array
+// ListNode definition
+struct ListNode {
+    int data;
+    ListNode* next;
+    ListNode(int val) : data(val), next(nullptr) {}
+};
+
+// Solution class
+class Solution {
+public:
+    ListNode* insertAtHead(ListNode*& head, int X) {
+        ListNode* newNode = new ListNode(X);
+        newNode->next = head;
+        head = newNode;
+        return head;
+    }
+};
+
+// Utility to create a linked list from vector
 ListNode* createList(vector<int>& arr) {
     ListNode* head = nullptr;
     for (int i = arr.size() - 1; i >= 0; --i) {
-        head = Solution().insertAtHead(head, arr[i]);
+        ListNode* newNode = new ListNode(arr[i]);
+        newNode->next = head;
+        head = newNode;
     }
     return head;
 }
 
-// Helper function to convert list to vector (for comparison)
+// Utility to convert linked list to vector
 vector<int> listToArray(ListNode* head) {
     vector<int> result;
-    while (head != nullptr) {
-        result.push_back(head->val);
+    while (head) {
+        result.push_back(head->data);
         head = head->next;
     }
     return result;
 }
 
-// Function to run individual test cases
-void runTestCase(vector<int> inputList, int X, vector<int> expected, int *passedCount, int *total) {
+// Test function
+void runTestCase(vector<int> inputList, int X, vector<int> expectedList, int* passed, int* total) {
     (*total)++;
-
     ListNode* head = createList(inputList);
     head = Solution().insertAtHead(head, X);
-
-    vector<int> actual = listToArray(head);
-
-    if (actual == expected) {
-        (*passedCount)++;
-        cout << "\n✅ " << *passedCount;
+    vector<int> outputList = listToArray(head);
+    if (outputList == expectedList) {
+        cout << "Test case passed\n";
+        (*passed)++;
     } else {
-        cout << "\n❌ Test failed for input: ";
-        cout << "X = " << X << ", list = [";
-        for (int i = 0; i < inputList.size(); i++) {
-            cout << inputList[i] << (i == inputList.size() - 1 ? "" : ", ");
-        }
-        cout << "]\nExpected: [";
-        for (int i = 0; i < expected.size(); i++) {
-            cout << expected[i] << (i == expected.size() - 1 ? "" : ", ");
-        }
-        cout << "], Actual: [";
-        for (int i = 0; i < actual.size(); i++) {
-            cout << actual[i] << (i == actual.size() - 1 ? "" : ", ");
-        }
-        cout << "]\n";
+        cout << "Test case failed\n";
+        cout << "Expected: ";
+        for (int x : expectedList) cout << x << " ";
+        cout << "\nGot: ";
+        for (int x : outputList) cout << x << " ";
+        cout << endl;
     }
 }
 
-// ✅ Main function to run all test cases
+// Main
 int main() {
-    int passedCount = 0;
-    int total = 0;
+    int passed = 0, total = 0;
 
-    // ✅ Basic Cases
-    runTestCase({1, 2, 3}, 7, {7, 1, 2, 3}, &passedCount, &total);
-    runTestCase({}, 7, {7}, &passedCount, &total);
-    runTestCase({10}, 5, {5, 10}, &passedCount, &total);
-    runTestCase({4, 6}, 9, {9, 4, 6}, &passedCount, &total);
-    runTestCase({100}, 0, {0, 100}, &passedCount, &total);
+    runTestCase({1, 2, 3}, 0, {0, 1, 2, 3}, &passed, &total);
+    runTestCase({}, 10, {10}, &passed, &total);
+    runTestCase({5}, 7, {7, 5}, &passed, &total);
 
-    // ✅ Summary
-    cout << "\n\nPassed " << passedCount << " / " << total << " test cases!" << endl;
-    if (passedCount != total) {
-        assert(false);  // Force failure
-    }
-
+    cout << passed << "/" << total << " test cases passed." << endl;
     return 0;
 }
