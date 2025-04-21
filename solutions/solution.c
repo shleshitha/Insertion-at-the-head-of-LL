@@ -7,6 +7,7 @@ struct ListNode {
     struct ListNode* next;
 };
 
+
 struct ListNode* insertAtHead(struct ListNode* head, int X) {
     struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
     newNode->val = X;
